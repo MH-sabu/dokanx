@@ -1,4 +1,30 @@
 
+
+
+RUN apt-get -y update \
+  && apt-get install -y gettext \
+  # Cleanup apt cache
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+RUN pip install pipenv
+COPY Pipfile Pipfile.lock /app/
+WORKDIR /app
+RUN pipenv install --system --deploy --dev
+
+### Build static assets
+FROM node:10 as build-nodejs
+
+ARG STATIC_URL
+ENV STATIC_URL ${STATIC_URL:-/static/}
+
+# Install node_modules
+COPY webpack.config.js app.json package.json package-lock.json tsconfig.json tslint.json webpack.d.ts /app/
+WORKDIR /app
+RUN npm install
+
+
 # Build static
 COPY ./saleor/static /app/saleor/static/
 COPY ./templates /app/templates/
