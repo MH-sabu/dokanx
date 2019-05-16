@@ -1,5 +1,5 @@
-### Build and install packages
-FROM python:3.7 as build-python
+
+
 
 RUN apt-get -y update \
   && apt-get install -y gettext \
