@@ -192,7 +192,7 @@ TEMPLATES = [
 ]
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = '-0qn18bgm3lyylo9wfo(!@(b53zp$-_3p!)mjzsw=8g*fm41&$'
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -333,8 +333,8 @@ AUTH_USER_MODEL = "account.User"
 
 LOGIN_URL = "/account/login/"
 
-DEFAULT_COUNTRY = os.environ.get("DEFAULT_COUNTRY", "US")
-DEFAULT_CURRENCY = os.environ.get("DEFAULT_CURRENCY", "USD")
+DEFAULT_COUNTRY = os.environ.get("DEFAULT_COUNTRY", "BD")
+DEFAULT_CURRENCY = os.environ.get("DEFAULT_CURRENCY", "BDT")
 DEFAULT_DECIMAL_PLACES = get_currency_fraction(DEFAULT_CURRENCY)
 DEFAULT_MAX_DIGITS = 12
 AVAILABLE_CURRENCIES = [DEFAULT_CURRENCY]
